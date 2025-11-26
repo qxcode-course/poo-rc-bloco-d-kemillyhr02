@@ -1,0 +1,39 @@
+{
+    "patches": [
+        {
+            "label": "2025-11-26_13-31-33",
+            "content": "@@ -3,151 +3,4 @@\n ass \n-Fone:%0A    def __init__(self, id:str, number:str):%0A        self.__id: str = id%0A        self.__number: str = number%0A%0A%0A    def isValid(self):%0A        \n",
+            "lines": "1"
+        },
+        {
+            "label": "2025-11-26_13-41-09",
+            "content": "@@ -150,78 +150,4 @@\n     \n-v = %220123456789().%22%0A        return all(k in v for k in self.__number)%0A    \n",
+            "lines": "8"
+        },
+        {
+            "label": "2025-11-26_13-43-49",
+            "content": "@@ -224,75 +224,4 @@\n     \n-%0A%0A%0A    def __str__(self):%0A        return f%22%7Bself.__id%7D:%7Bself.__number%7D%22\n",
+            "lines": "10"
+        },
+        {
+            "label": "2025-11-26_13-44-51",
+            "content": "@@ -225,99 +225,9 @@\n    %0A\n-    def getId(self):%0A        return self.__id%0A    def getNumber(self):%0A        return %0A    \n+%0A\n %0A   \n@@ -291,13 +291,8 @@\n number%7D%22\n-%0A    \n",
+            "lines": "14"
+        },
+        {
+            "label": "2025-11-26_14-04-24",
+            "content": "@@ -221,21 +221,16 @@\n r)%0A    %0A\n-    %0A\n     def \n@@ -234,32 +234,32 @@\n ef getId(self):%0A\n+\n         return s\n@@ -307,29 +307,21 @@\n  return \n-self.__number\n+%0A    \n %0A    def\n@@ -386,397 +386,8 @@\n r%7D%22%0A\n+\n     \n-%0Aclass Contato:%0A    def __init__(self, nome:str):%0A        self.__nome: str = nome%0A        self.__fav: bool = False%0A        self.__fone: list= %5B%5D%0A%0A    def addFone(self, id: str, number: str):%0A        fone= Fone(id, number)%0A        if fone.isValid():%0A            self.__fone.append(fone)%0A        print(%22fail: numero invalido%22)%0A    def rmFone(self, index:int):%0A        self.__fone.pop(index)%0A\n",
+            "lines": "18"
+        },
+        {
+            "label": "2025-11-26_14-18-08",
+            "content": "@@ -1,821 +1,91 @@\n-class Fone:%0A    def __init__(self, id:str, number:str):%0A        self.__id: str = id%0A        self.__number: str = number%0A%0A%0A    def isValid(self):%0A        v = %220123456789().%22%0A        return all(k in v for k in self.__number)%0A    %0A    %0A    %0A    def getId(self):%0A        return self.__id%0A    def getNumber(self):%0A        return self.__number%0A    def __str__(self):%0A        return f%22%7Bself.__id%7D:%7Bself.__number%7D%22%0A    %0Aclass Contato:%0A    def __init__(self, nome:str):%0A        self.__nome: str = nome%0A        self.__fav: bool = False%0A        self.__fone: list= %5B%5D%0A%0A    def addFone(self, id: str, number: str):%0A        fone= Fone(id, number)%0A        if fone.isValid():%0A            self.__fone.append(fone)%0A        print(%22fail: numero invalido%22)%0A    def rmFone(self, index:int):%0A        try:%0A            self.__fone.pop(index)%0A\n+@@ -761,25 +761,8 @@%0A t):%250A%0A-        try:%250A    %0A     %0A@@ -792,510 +792,4 @@%0A ex)%250A%0A-\n     \n@@ -95,17 +95,19 @@\n  except:\n-%0A\n+%250A\n         \n@@ -116,17 +116,19 @@\n   print(\n-%22\n+%2522\n fail: in\n@@ -144,12 +144,18 @@\n lido\n-%22)%0A%0A\n+%2522)%250A%250A\n     \n@@ -172,33 +172,35 @@\n Favorited(self):\n-%0A\n+%250A\n         self.__f\n@@ -218,25 +218,27 @@\n lf.__fav\n-%0A\n+%250A\n         \n %0A    def\n@@ -225,25 +225,27 @@\n v%250A        \n-%0A\n+%250A\n     def isFa\n@@ -254,25 +254,27 @@\n rited(self):\n-%0A\n+%250A\n         retu\n@@ -286,22 +286,26 @@\n lf.__fav\n-%0A\n+%250A\n     \n-%0A\n+%250A\n     def \n@@ -310,33 +310,35 @@\n f getFone(self):\n-%0A\n+%250A\n         return s\n@@ -347,17 +347,19 @@\n f.__fone\n-%0A\n+%250A\n     def \n@@ -368,25 +368,27 @@\n tName(self):\n-%0A\n+%250A\n         retu\n@@ -401,17 +401,19 @@\n f.__nome\n-%0A\n+%250A\n     def \n@@ -428,33 +428,35 @@\n self, nome:str):\n-%0A\n+%250A\n         self.__n\n@@ -465,18 +465,22 @@\n e = nome\n-%0A%0A\n+%250A%250A\n     def \n@@ -485,33 +485,35 @@\n f __str__(self):\n-%0A\n+%250A\n         j=%22@%22 if\n@@ -510,11 +510,15 @@\n   j=\n-%22@%22\n+%2522@%2522\n  if \n@@ -537,12 +537,18 @@\n lse \n-%22-%22%0A\n+%2522-%2522%250A\n     \n@@ -563,35 +563,53 @@\n rn f\n-%22%7Bj%7D %7Bself.__nome%7D %5B%22+ %22, %22\n+%2522%257Bj%257D %257Bself.__nome%257D %255B%2522+ %2522, %2522\n .joi\n@@ -643,291 +643,28 @@\n ne)+\n-%22%5D%22%0A    %0Aclass agenda:%0A\n+%2522%255D%2522%250A\n     \n+%250A\n def \n-__init__(self):%0A        self.__contatos = %5B%5D%0A%0A    def findPosByName(self, nome:str):%0A        for k, i in enumerate(self.__contatos):%0A            if k.getName()== nome:%0A                return i%0A            %0A        return -1%0A                %0A%0A%0A%0Adef main(): \n+%0A\n",
+            "lines": "7"
+        },
+        {
+            "label": "2025-11-26_14-52-46",
+            "content": "class Fone:\n    def __init__(self, id:str, number:str):\n        self.__id: str = id\n        self.__number: str = number\n\n\n    def isValid(self):\n        v = \"0123456789().\"\n        return all(k in v for k in self.__number)\n    \n    \n    \n    def getId(self):\n        return self.__id\n    def getNumber(self):\n        return self.__number\n    def __str__(self):\n        return f\"{self.__id}:{self.__number}\"\n    \nclass Contato:\n    def __init__(self, nome:str):\n        self.__nome: str = nome\n        self.__fav: bool = False\n        self.__fone: list= []\n\n    def addFone(self, id: str, number: str):\n        fone= Fone(id, number)\n        if fone.isValid():\n            self.__fone.append(fone)\n        print(\"fail: numero invalido\")\n    def rmFone(self, index:int):\n        try:\n            self.__fone.pop(index)\n        except:\n            print(\"fail: indice invalido\")\n\n    def toogleFavorited(self):\n        self.__fav = not self.__fav\n        \n    def isFavorited(self):\n        return self.__fav\n    \n    def getFone(self):\n        return self.__fone\n    def getName(self):\n        return self.__nome\n    def setName(self, nome:str):\n        self.__nome = nome\n\n    def __str__(self):\n        j=\"@\" if self.__fav else \"-\"\n        return f\"{j} {self.__nome} [\"+ \", \".join(str(k) for k in self.__fone)+\"]\"\n    \nclass agenda:\n    def __init__(self):\n        self.__contatos = []\n\n    def findPosByName(self, nome:str):\n        for k, i in enumerate(self.__contatos):\n            if k.getName()== nome:\n                return i\n            \n        return -1\n                \n\n\n\ndef main(): ",
+            "lines": "68"
+        }
+    ]
+}
