@@ -38,7 +38,7 @@ class Contato:
         return f"{flag} {self.__nome} [" + ", ".join(str(c) for c in self.__fone)+"]"
 
     def isFavorited(self):
-        return self.__fav\
+        return self.__fav
         
 
 def main():

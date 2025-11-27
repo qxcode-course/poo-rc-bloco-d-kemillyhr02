@@ -32,8 +32,113 @@
         },
         {
             "label": "2025-11-26_14-52-46",
-            "content": "class Fone:\n    def __init__(self, id:str, number:str):\n        self.__id: str = id\n        self.__number: str = number\n\n\n    def isValid(self):\n        v = \"0123456789().\"\n        return all(k in v for k in self.__number)\n    \n    \n    \n    def getId(self):\n        return self.__id\n    def getNumber(self):\n        return self.__number\n    def __str__(self):\n        return f\"{self.__id}:{self.__number}\"\n    \nclass Contato:\n    def __init__(self, nome:str):\n        self.__nome: str = nome\n        self.__fav: bool = False\n        self.__fone: list= []\n\n    def addFone(self, id: str, number: str):\n        fone= Fone(id, number)\n        if fone.isValid():\n            self.__fone.append(fone)\n        print(\"fail: numero invalido\")\n    def rmFone(self, index:int):\n        try:\n            self.__fone.pop(index)\n        except:\n            print(\"fail: indice invalido\")\n\n    def toogleFavorited(self):\n        self.__fav = not self.__fav\n        \n    def isFavorited(self):\n        return self.__fav\n    \n    def getFone(self):\n        return self.__fone\n    def getName(self):\n        return self.__nome\n    def setName(self, nome:str):\n        self.__nome = nome\n\n    def __str__(self):\n        j=\"@\" if self.__fav else \"-\"\n        return f\"{j} {self.__nome} [\"+ \", \".join(str(k) for k in self.__fone)+\"]\"\n    \nclass agenda:\n    def __init__(self):\n        self.__contatos = []\n\n    def findPosByName(self, nome:str):\n        for k, i in enumerate(self.__contatos):\n            if k.getName()== nome:\n                return i\n            \n        return -1\n                \n\n\n\ndef main(): ",
+            "content": "@@ -1562,129 +1562,8 @@\n  -1%0A\n-    def addContact(self, nome:str):%0A        Fones= list%5BFone%5D%0A        return%0A    def getContact(self, nome:str)%0A        %0A\n     \n@@ -1590,9 +1590,8 @@\n main(): \n-%0A\n",
             "lines": "68"
+        },
+        {
+            "label": "2025-11-27_18-39-27",
+            "content": "@@ -1661,33 +1661,32 @@\n (self, nome:str)\n-:\n %0A        %0A      \n",
+            "lines": "73"
+        },
+        {
+            "label": "2025-11-27_18-39-36",
+            "content": "@@ -1692,16 +1692,23 @@\n         \n+    %0A%0A%0A\n %0Adef mai\n@@ -1712,8 +1712,9 @@\n main(): \n+%0A\n",
+            "lines": "73"
+        },
+        {
+            "label": "2025-11-27_18-39-45",
+            "content": "@@ -1651,28 +1651,62 @@\n getContact(self, nome:str):%0A\n+        %0A            %0Adef main(): \n",
+            "lines": "70"
+        },
+        {
+            "label": "2025-11-27_18-39-56",
+            "content": "@@ -1,1692 +1,58 @@\n-class Fone:%0A    def __init__(self, id:str, number:str):%0A        self.__id: str = id%0A        self.__number: str = number%0A%0A%0A    def isValid(self):%0A        v = %220123456789().%22%0A        return all(k in v for k in self.__number)%0A    %0A    %0A    %0A    def getId(self):%0A        return self.__id%0A    def getNumber(self):%0A        return self.__number%0A    def __str__(self):%0A        return f%22%7Bself.__id%7D:%7Bself.__number%7D%22%0A    %0Aclass Contato:%0A    def __init__(self, nome:str):%0A        self.__nome: str = nome%0A        self.__fav: bool = False%0A        self.__fone: list= %5B%5D%0A%0A    def addFone(self, id: str, number: str):%0A        fone= Fone(id, number)%0A        if fone.isValid():%0A            self.__fone.append(fone)%0A        print(%22fail: numero invalido%22)%0A    def rmFone(self, index:int):%0A        try:%0A            self.__fone.pop(index)%0A        except:%0A            print(%22fail: indice invalido%22)%0A%0A    def toogleFavorited(self):%0A        self.__fav = not self.__fav%0A        %0A    def isFavorited(self):%0A        return self.__fav%0A    %0A    def getFone(self):%0A        return self.__fone%0A    def getName(self):%0A        return self.__nome%0A    def setName(self, nome:str):%0A        self.__nome = nome%0A%0A    def __str__(self):%0A        j=%22@%22 if self.__fav else %22-%22%0A        return f%22%7Bj%7D %7Bself.__nome%7D %5B%22+ %22, %22.join(str(k) for k in self.__fone)+%22%5D%22%0A    %0Aclass agenda:%0A    def __init__(self):%0A        self.__contatos = %5B%5D%0A%0A    def findPosByName(self, nome:str):%0A        for k, i in enumerate(self.__contatos):%0A            if k.getName()== nome:%0A                return i%0A            %0A        return -1%0A    def addContact(self, nome:str):%0A        Fones= list%5BFone%5D%0A        return%0A    def getContact(self, nome:str):%0A        return\n+@@ -1659,28 +1659,20 @@%0A ct(self, nome:str):%250A%0A-        %0A\n",
+            "lines": "3"
+        },
+        {
+            "label": "2025-11-27_18-44-56",
+            "content": "@@ -1318,17 +1318,17 @@\n  %0Aclass \n-A\n+a\n genda:%0A \n@@ -1689,142 +1689,4 @@\n turn\n-%0A    %0Adef main():%0A    agenda= Agenda()%0A    while True:%0A        line= input()%0A        args= line.split()%0A        print(f%22$%7Bline%7D%22)%0A        \n",
+            "lines": "68"
+        },
+        {
+            "label": "2025-11-27_18-47-32",
+            "content": "@@ -1827,49 +1827,4 @@\n     \n-if args%5B0%5D==%22end%22:%0A            break%0A        \n",
+            "lines": "76"
+        },
+        {
+            "label": "2025-11-27_18-48-17",
+            "content": "@@ -1,1948 +1,137 @@\n-class Fone:%0A    def __init__(self, id:str, number:str):%0A        self.__id: str = id%0A        self.__number: str = number%0A%0A%0A    def isValid(self):%0A        v = %220123456789().%22%0A        return all(k in v for k in self.__number)%0A    %0A    %0A    %0A    def getId(self):%0A        return self.__id%0A    def getNumber(self):%0A        return self.__number%0A    def __str__(self):%0A        return f%22%7Bself.__id%7D:%7Bself.__number%7D%22%0A    %0Aclass Contato:%0A    def __init__(self, nome:str):%0A        self.__nome: str = nome%0A        self.__fav: bool = False%0A        self.__fone: list= %5B%5D%0A%0A    def addFone(self, id: str, number: str):%0A        fone= Fone(id, number)%0A        if fone.isValid():%0A            self.__fone.append(fone)%0A        print(%22fail: numero invalido%22)%0A    def rmFone(self, index:int):%0A        try:%0A            self.__fone.pop(index)%0A        except:%0A            print(%22fail: indice invalido%22)%0A%0A    def toogleFavorited(self):%0A        self.__fav = not self.__fav%0A        %0A    def isFavorited(self):%0A        return self.__fav%0A    %0A    def getFone(self):%0A        return self.__fone%0A    def getName(self):%0A        return self.__nome%0A    def setName(self, nome:str):%0A        self.__nome = nome%0A%0A    def __str__(self):%0A        j=%22@%22 if self.__fav else %22-%22%0A        return f%22%7Bj%7D %7Bself.__nome%7D %5B%22+ %22, %22.join(str(k) for k in self.__fone)+%22%5D%22%0A    %0Aclass Agenda:%0A    def __init__(self):%0A        self.__contatos = %5B%5D%0A%0A    def findPosByName(self, nome:str):%0A        for k, i in enumerate(self.__contatos):%0A            if k.getName()== nome:%0A                return i%0A            %0A        return -1%0A    %0A    def addContact(self, nome:str):%0A        Fones= list%5BFone%5D%0A        return%0A    def getContact(self, nome:str):%0A        return%0A    %0Adef main():%0A    agenda= Agenda()%0A    while True:%0A        line= input()%0A        args= line.split()%0A        print(f%22$%7Bline%7D%22)%0A        if args%5B0%5D==%22end%22:%0A            break%0A        elif args%5B0%5D==%22add%22:%0A            agenda.addContact(args%5B1%5D, args%5B2%5D)\n+@@ -1558,21 +1558,16 @@%0A turn -1%250A%0A-    %250A%0A     def %0A@@ -1872,45 +1872,4 @@%0A     %0A-elif args%255B0%255D==%2522show%2522:%250A            pritn()%0A\n",
+            "lines": "7"
+        },
+        {
+            "label": "2025-11-27_18-52-42",
+            "content": "@@ -1695,67 +1695,8 @@\n urn%0A\n-    def __str__(self):%0A        return f%22%7Bself.__contatos%7D%22%0A\n     \n",
+            "lines": "80"
+        },
+        {
+            "label": "2025-11-27_18-55-47",
+            "content": "@@ -1680,136 +1680,8 @@\n r):%0A\n-        co=%5B%5D%0A        for self.__contatos in self.__fav:%0A            co.append(self.__contatos)%0A            return self.__fav%0A%0A%0A\n     \n@@ -1714,25 +1714,16 @@\n (self):%0A\n-        %0A\n         \n",
+            "lines": "82"
+        },
+        {
+            "label": "2025-11-27_19-03-15",
+            "content": "@@ -1603,38 +1603,8 @@\n r):%0A\n-        nome.findPosByName(i)%0A\n     \n@@ -1680,51 +1680,8 @@\n r):%0A\n-        return%0A    def getFavorited(self):%0A\n     \n",
+            "lines": "89"
+        },
+        {
+            "label": "2025-11-27_19-11-04",
+            "content": "@@ -1591,32 +1591,62 @@\n elf, nome:str):%0A\n+        nome.findPosByName(i)%0A\n         Fones= l\n",
+            "lines": "92"
+        },
+        {
+            "label": "2025-11-27_19-13-03",
+            "content": "@@ -729,21 +729,16 @@\n alido%22)%0A\n-    %0A\n     def \n@@ -1877,32 +1877,41 @@\n  __str__(self):%0A\n+        %0A\n         return f\n@@ -1930,16 +1930,16 @@\n tatos%7D%22%0A\n-\n     %0Adef\n@@ -2129,24 +2129,24 @@\n %5B0%5D==%22add%22:%0A\n+\n             \n@@ -2184,286 +2184,4 @@\n %5B2%5D)\n-%0A        %0A        elif args%5B0%5D==%22show%22:%0A            print(agenda)%0A        %0A        elif args%5B0%5D==%22rm%22:%0A            agenda.rmFone(int(args%5B1%5D))%0A%0A        elif args%5B0%5D==%22tfav%22:%0A            agenda.toogleFavorited(int(args%5B2%5D))%0A        else:%0A            print(%22comando invalido%22)%0Amain()%0A\n",
+            "lines": "91"
+        },
+        {
+            "label": "2025-11-27_19-21-22",
+            "content": "@@ -2172,20 +2172,16 @@\n 1%5D, \n-str(\n args%5B2%5D)\n )%0A  \n@@ -2168,33 +2168,32 @@\n rgs%5B1%5D, args%5B2%5D)\n-)\n %0A        %0A      \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-11-27_19-22-15",
+            "content": "@@ -2162,12 +2162,8 @@\n tact\n-=str\n (arg\n@@ -2168,24 +2168,28 @@\n rgs%5B1%5D, \n+str(\n args%5B2%5D)\n %0A       \n@@ -2180,16 +2180,17 @@\n args%5B2%5D)\n+)\n %0A       \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-11-27_19-22-30",
+            "content": "@@ -2158,17 +2158,37 @@\n dContact\n-(\n+=str(args%5B1%5D, args%5B2%5D\n )%0A      \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-11-27_19-22-43",
+            "content": "@@ -2159,28 +2159,16 @@\n Contact(\n-int(args%5B1%5D)\n )%0A      \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-11-27_19-22-54",
+            "content": "@@ -2159,24 +2159,28 @@\n Contact(\n+int(\n args%5B1%5D)\n %0A       \n@@ -2171,16 +2171,17 @@\n args%5B1%5D)\n+)\n %0A       \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-11-27_19-23-09",
+            "content": "@@ -1854,35 +1854,8 @@\n fav%0A\n-        print(getFavorited)\n %0A%0A  \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-11-27_19-29-35",
+            "content": "@@ -1849,16 +1849,44 @@\n lf.__fav\n+%0A        print(getFavorited)\n %0A%0A      \n",
+            "lines": "103"
+        },
+        {
+            "label": "2025-11-27_19-33-57",
+            "content": "@@ -1908,34 +1908,11 @@\n urn \n-%22%5Cn%22.join(str(c) for c in \n+f%22%7B\n self\n@@ -1918,25 +1918,26 @@\n f.__contatos\n-)\n+%7D%22\n %0A    %0Adef ma\n",
+            "lines": "102"
+        },
+        {
+            "label": "2025-11-27_19-59-29",
+            "content": "class Fone:\n    def __init__(self, id:str, number:str):\n        self.__id: str = id\n        self.__number: str = number\n\n\n    def isValid(self):\n        v = \"0123456789().\"\n        return all(k in v for k in self.__number)\n    \n    \n    \n    def getId(self):\n        return self.__id\n    def getNumber(self):\n        return self.__number\n    def __str__(self):\n        return f\"{self.__id}:{self.__number}\"\n    \nclass Contato:\n    def __init__(self, nome:str):\n        self.__nome: str = nome\n        self.__fav: bool = False\n        self.__fone: list= []\n\n    def addFone(self, id: str, number: str):\n        fone= Fone(id, number)\n        if fone.isValid():\n            self.__fone.append(fone)\n        print(\"fail: numero invalido\")\n    \n    def rmFone(self, index:int):\n        try:\n            self.__fone.pop(index)\n        except:\n            print(\"fail: indice invalido\")\n\n    def toogleFavorited(self):\n        self.__fav = not self.__fav\n        \n    def isFavorited(self):\n        return self.__fav\n    \n    def getFone(self):\n        return self.__fone\n    def getName(self):\n        return self.__nome\n    def setName(self, nome:str):\n        self.__nome = nome\n\n    def __str__(self):\n        j=\"@\" if self.__fav else \"-\"\n        return f\"{j} {self.__nome} [\"+ \", \".join(str(k) for k in self.__fone)+\"]\"\n    \nclass Agenda:\n    def __init__(self):\n        self.__contatos = []\n\n    def findPosByName(self, nome:str):\n        for k, i in enumerate(self.__contatos):\n            if k.getName()== nome:\n                return i\n            \n        return -1\n    \n    def addContact(self, nome:str):\n        Fones= list[Fone]\n        return\n    def getContact(self, nome:str):\n        return\n    def getFavorited(self):\n        co=[]\n        for self.__contatos in self.__fav:\n            co.append(self.__contatos)\n            return self.__fav\n\n        return\n    def __str__(self):\n        return \"\\n\".join(str(c) for c in self.__contatos)\n    \ndef main():\n    agenda= Agenda()\n    while True:\n        line= input()\n        args= line.split()\n        print(f\"${line}\")\n        if args[0]==\"end\":\n            break\n        elif args[0]==\"add\":\n            agenda.addContact(args[1])\n        \n        elif args[0]==\"show\":\n            print(agenda)\n        \n        elif args[0]==\"rm\":\n            agenda.rmFone(int(args[1]))\n\n        elif args[0]==\"tfav\":\n            agenda.toogleFavorited(int(args[2]))\n        else:\n            print(\"comando invalido\")\nmain()\n",
+            "lines": "102"
         }
     ]
 }
