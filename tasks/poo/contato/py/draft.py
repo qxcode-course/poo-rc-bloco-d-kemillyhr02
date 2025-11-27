@@ -37,6 +37,10 @@ class Contato:
         flag="@" if self.__fav else "-"
         return f"{flag} {self.__nome} [" + ", ".join(str(c) for c in self.__fone)+"]"
 
+    def isFavorited(self):
+        return self.__fav
+        
+
 def main():
     contato = Contato("")
     while True :
