@@ -27,6 +27,7 @@ class Contato:
         fone= Fone(id, number)
         if fone.isValid():
             self.__fone.append(fone)
+            return
         print("fail: numero invalido")
     
     def rmFone(self, index:int):
@@ -57,27 +58,66 @@ class Agenda:
         self.__contatos = []
 
     def findPosByName(self, nome:str):
-        for k, i in enumerate(self.__contatos):
+        
+        for i, k in enumerate(self.__contatos):
             if k.getName()== nome:
                 return i
             
         return -1
     
-    def addContact(self, nome:str):
-        Fones= list[Fone]
-        return
+    def addContact(self, nome:str, fones:list[Fone]):
+        po= self.findPosByName(nome)
+        if po!= -1:
+            contato= self.__contatos[po]
+        else:
+            contato=Contato(nome)
+            self.__contatos.append(contato)
+        for i in fones:
+            if i.isValid():
+                contato.addFone(i.getId(), i.getNumber())
+            else:
+                print(f"fail: invalid number {i}")
+        self.__contatos.sort(key=lambda c: c.getName())
     def getContact(self, nome:str):
-        return
+        po=self.findPosByName(nome)
+        if po==-1:
+            return None
+        return self.__contatos[po]
+    
+
+    def search(self, pattern:str):
+        encontrado=[]
+        for contato in self.__contatos:
+            if pattern in str(contato):
+               encontrado.append(contato)
+        return encontrado
+        
+    def rm(self, nome:str):
+        po=self.findPosByName(nome)
+        if po==-1:
+            return None
+        self.__contatos.pop(po)
+
+    def rmFone(self, nome:str, index:int):
+        contato=self.getContact(nome)
+        if contato:
+            contato.rmFone(index)
+        else:
+            print("fail: contato nao existe")
+
     def getFavorited(self):
         co=[]
         for self.__contatos in self.__fav:
             co.append(self.__contatos)
             return self.__fav
-
-        return
+    def favs(self):
+        return "\n".join(str(c) for c in self.__contatos if c.isFavorited())
+         
     def __str__(self):
+
         return "\n".join(str(c) for c in self.__contatos)
         
+    
     
 def main():
     agenda= Agenda()
@@ -88,16 +128,31 @@ def main():
         if args[0]=="end":
             break
         elif args[0]=="add":
-            agenda.addContact(args[1])
+            nome= args[1]
+            fone=[]
+            for i in args[2:]:
+                id, number= i.split(":")
+                fone.append(Fone(id, number))
+            agenda.addContact(nome,fone)
         
         elif args[0]=="show":
             print(agenda)
         
         elif args[0]=="rm":
-            agenda.rmFone(int(args[1]))
-
+            agenda.rm(args[1])
+        elif args[0]=="rmFone":
+            agenda.rmFone(args[1], int(args[2]))
         elif args[0]=="tfav":
-            agenda.toogleFavorited(int(args[2]))
+            contato= agenda.getContact(args[1])
+            if contato:
+                contato.toogleFavorited()
+        elif args[0]=="favs":
+            print(agenda.favs())
+
+        elif args[0]=="search":
+            s=agenda.search(args[1])
+            for i in s:
+                print(i)
         else:
             print("comando invalido")
 main()
